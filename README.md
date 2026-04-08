@@ -1,8 +1,6 @@
 # 🛡️ JARVIS — Local Cybersecurity AI Assistant
 
-<p align="center">
-  <video src="./assets/J_A_R_V_I_S_live_wallpaper.mp4" width="100%" autoplay loop muted></video>
-</p>
+![J.A.R.V.I.S live wallpaper](https://i.makeagif.com/media/5-27-2017/1it9YM.gif)
 
 A fully **local, private cybersecurity AI assistant** built for:
 
@@ -17,13 +15,11 @@ A fully **local, private cybersecurity AI assistant** built for:
 ## 🖥️ Screenshots
 
 ### 💬 Chat Interface
-> (Add your screenshot here)
 ![Chat UI](./assets/chat.jpg)
 
 ---
 
 ### 🔧 Tool Execution Panel
-> (Add your screenshot here)
 ![Tools UI](./assets/tools.jpg)
 
 ---
