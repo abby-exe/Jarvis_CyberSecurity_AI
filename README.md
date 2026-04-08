@@ -1,6 +1,8 @@
-# 🛡️ JARVIS — Local Cybersecurity AI Assistant
+# 🛡️ J.A.R.V.I.S - *Local Cybersecurity AI Assistant*
 
-![J.A.R.V.I.S live wallpaper](https://i.makeagif.com/media/5-27-2017/1it9YM.gif)
+<p align="center">
+  <img src="https://i.makeagif.com/media/5-27-2017/1it9YM.gif" alt="J.A.R.V.I.S live wallpaper">
+</p>
 
 A fully **local, private cybersecurity AI assistant** built for:
 
