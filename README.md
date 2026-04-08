@@ -1,102 +1,163 @@
 # 🛡️ JARVIS — Local Cybersecurity AI Assistant
 
-A fully local, private AI assistant built for ethical hacking, CTF solving, and cybersecurity learning.
+<p align="center">
+  <video src="./assets/J_A_R_V_I_S_live_wallpaper.mp4" width="100%" autoplay loop muted></video>
+</p>
 
-## Architecture
+A fully **local, private cybersecurity AI assistant** built for:
 
-```
-Microphone → Whisper STT → Ollama LLM → Piper TTS → Speaker
-                 ↓               ↓
-           Wake Word         Tool Use
-          (OpenWakeWord)  (nmap, shell, decode, search...)
-                 ↓
-            Gradio Web UI (http://localhost:7860)
-```
+- 🎯 CTF Solving (HTB, TryHackMe, etc.)
+- 🔍 Ethical Hacking & Pentesting Practice
+- 🧠 Cybersecurity Learning & Research
 
-## Quick Start
+⚡ Powered by **Ollama (Local LLM)** + **Gradio UI** + **Tool Execution Engine**
+
+---
+
+## 🖥️ Screenshots
+
+### 💬 Chat Interface
+> (Add your screenshot here)
+![Chat UI](./assets/chat.jpg)
+
+---
+
+### 🔧 Tool Execution Panel
+> (Add your screenshot here)
+![Tools UI](./assets/tools.jpg)
+
+---
+
+## 📥 Clone This Repository
 
 ```bash
-chmod +x setup.sh
+git clone https://github.com/abby-exe/Jarvis_CyberSecurity_AI.git
+cd Jarvis_CyberSecurity_AI
+```
+
+## 🚀 Quick Setup (Recommended)
+
+```bash
+chmod +x setup.sh  //Set execution permission for one-file installer
 ./setup.sh
-source venv/bin/activate
+python3 -m venv .venv  //Create python virtual environment         
+source venv/bin/activate 
+python jarvis_ui.py //Run the Web UI
+```
+
+### Open:
+
+`http://localhost:7860`
+
+## 🛠️ Manual Installation for Models (Step-by-Step)
+
+### 1. Install Ollama
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+ollama serve
+```
+
+### 2. Install Models
+
+| Tier | Model Command | Pros/Cons | Best For |
+| :--- | :--- | :--- | :--- |
+| **⚡ Lightweight** | `ollama pull mistral`<br>`ollama pull llama3.2` | ✔ Fast / Low RAM<br>❌ Less accurate | Low-end laptops / CPU only |
+| **⚖️ Balanced** | `ollama pull qwen2.5:1.5b` | ✔ Speed + Accuracy | **Recommended** for CTF & Pentesting |
+| **🧠 Advanced** | `ollama pull deepseek-r1` | ✔ Expert Reasoning<br>❌ Slower on CPU | Complex challenges & Exploit logic |
+| **🚀 High-End** | `ollama pull nu11secur1tyAI` | ✔ Red Team focused<br>⚠️ Needs 16GB+ RAM | Exploit dev & Attack simulation |
+
+### 🔄 Switching Models
+
+Inside UI → dropdown
+OR:
+
+```bash
+export OLLAMA_MODEL=mistral
 python jarvis_ui.py
 ```
 
-Open → http://localhost:7860
+## ⚙️ Features
 
-## Manual Installation
+* 💬 **Chat-based** cybersecurity assistant
+* 🎯 **Prebuilt CTF templates** (SQLi, XSS, Crypto, Pwn, etc.)
+* ⚡ **Quick commands** panel
+* 📋 Built-in **hacking cheatsheet**
+* 🔄 **Live model switching**
+* 🔒 **Fully local** (no API, no cloud)
 
-### 1. Install Ollama + model
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull qwen2.5          # recommended
-ollama pull deepseek-r1      # best reasoning for CTFs
-ollama pull qwen2.5-coder    # best for exploit dev
+---
+
+## 🧠 Built-in Tool Engine
+
+JARVIS includes a tool execution system to interact with your environment:
+
+| Tool | Description |
+| :--- | :--- |
+| `run_command` | Execute shell commands (nmap, sqlmap, etc.) |
+| `web_search` | Search CVEs / writeups |
+| `read_file` | Read local files |
+| `write_file` | Save payloads/scripts |
+| `decode` | Base64, hex, rot13, URL, etc. |
+
+### ⚡ Command Execution (IMPORTANT)
+JARVIS can execute terminal commands using Python to automate workflows:
+* **Runs tools like:** `nmap`, `gobuster`, `sqlmap`, and custom scripts.
+* ✔ Highly useful for CTF automation.
+* ⚠️ Some dangerous commands are blocked.
+* ⚠️ **Still use responsibly.**
+
+---
+
+## 🧩 Architecture
+
+```mermaid
+graph TD
+    User --> Gradio_UI
+    Gradio_UI --> JARVIS_Core
+    JARVIS_Core --> Ollama_LLM
+    JARVIS_Core --> Tool_Engine
+    Tool_Engine --> Ops[Shell / Decode / File Ops / Search]
 ```
 
-### 2. Python deps
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+## 🧪 Use Cases
 
-### 3. Piper TTS (optional — better voice)
-```bash
-# Download from: https://github.com/rhasspy/piper/releases
-# Then download voice model:
-wget https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx
-```
+* 🎯 **HTB / TryHackMe** challenges
+* 🔍 **Recon** automation
+* 💉 **Web exploitation** testing
+* 🔐 **Password cracking** workflows
+* 📦 **Exploit development**
+* 🧠 **Learning** cybersecurity concepts
 
-### 4. Run
-```bash
-python jarvis_ui.py     # Web UI
-python jarvis_core.py   # CLI only
-```
+---
 
-## Environment Variables
+## ⚖️ Legal Disclaimer
 
-| Variable | Default | Description |
-|---|---|---|
-| `OLLAMA_MODEL` | `qwen2.5` | Which Ollama model to use |
-| `WHISPER_MODEL` | `base` | Whisper size: tiny/base/small/medium |
-| `TTS_VOICE` | `en_US-lessac-medium` | Piper voice model |
+This tool is strictly for:
 
-## Features
+* ✅ **Learning**
+* ✅ **CTF challenges**
+* ✅ **Authorized penetration testing**
 
-- **Voice Chat** — Say "Jarvis" to wake, then ask your question
-- **CTF Templates** — One-click prompts for web, crypto, pwn, forensics, reversing
-- **Tool Use** — AI can run shell commands, search the web, read/write files, decode data
-- **Direct Tool Panel** — Run nmap, hashcat, gobuster etc. directly from the UI
-- **Quick Reference** — Always-visible cheatsheet for common commands
-- **Multi-model** — Switch between Ollama models live
+❌ **Do NOT use against systems without permission.**
 
-## Built-in Tools
+---
 
-| Tool | What it does |
-|---|---|
-| `run_command` | Execute shell commands (nmap, sqlmap, hashcat...) |
-| `web_search` | Search for CVEs, writeups, documentation |
-| `read_file` | Read challenge files from disk |
-| `write_file` | Save scripts, payloads, notes |
-| `decode` | Base64, hex, rot13, URL, binary, morse |
+## 👨‍💻 Author
 
-## Recommended Models
+Built by **Abby (Abbhilash Simanchalam)** *Cybersecurity Enthusiast* ⚡
 
-| Model | Best for |
-|---|---|
-| `qwen2.5` | General cybersecurity, good balance |
-| `deepseek-r1` | Complex CTF reasoning, step-by-step |
-| `qwen2.5-coder` | Exploit dev, script writing |
-| `llama3.2` | Fast responses, general use |
-| `mistral` | Lightweight, fast on CPU |
+---
 
-## Legal Notice
+## 📄 License
 
-This tool is for **ethical hacking only**:
-- Your own systems
-- CTF challenges (HackTheBox, TryHackMe, PicoCTF, etc.)
-- Authorized penetration testing engagements
-- Security research in controlled lab environments
+Distributed under the **MIT License**. See `LICENSE` for more information.
 
-Do not use against systems you don't own or have explicit written permission to test.
+---
+
+## ⭐ Support
+
+If you like this project:
+
+* ⭐ **Star** the repo
+* 🚀 **Share** with others
